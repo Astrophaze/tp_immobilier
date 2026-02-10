@@ -1,0 +1,35 @@
+@use '../../../variabes' as var;
+
+
+.image-bien {
+  height: 200px;
+  object-fit: cover;
+}
+
+.text-orange {
+  color: var.$orange; 
+}
+
+.trait-orange {
+  width: 50px;
+  height: 3px;
+  background-color: var.$orange;
+}
+
+.bouton-pagination {
+  border: 1px solid var.$orange;
+  color: black;
+  background-color: white;
+
+  &:hover, &.active {
+    background-color: var.$orange !important;
+    color: white !important;
+  }
+}
+
+.card {
+  transition: transform 0.2s;
+  &:hover {
+    transform: translateY(-5px);
+  }
+}

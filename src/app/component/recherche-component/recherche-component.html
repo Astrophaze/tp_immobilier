@@ -1,0 +1,39 @@
+<div class="container py-5">
+  <h2 class="titre-footer mb-4 text-dark">Résultats de votre recherche</h2>
+  
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    @for (offre of offresAffichees(); track offre.id) {
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="/images/cozy-dining-room-modern-apartment.jpg" 
+               class="card-img-top image-bien" 
+               [alt]="offre.libelle">
+          
+          <div class="card-body">
+            <h5 class="card-title text-uppercase fs-6">{{ offre.libelle }}</h5>
+            <div class="trait-orange mb-3"></div>
+            <p class="card-text fw-bold text-orange fs-5">{{ offre.prix }} €</p>
+            <p class="card-text small text-muted">{{ offre.ville }}</p>
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <div class="col-12 text-center py-5">
+        <p class="fs-4">Aucun bien ne correspond à votre recherche.</p>
+      </div>
+    }
+  </div>
+
+  @if (totalNombrePages() > 1) {
+    <div class="d-flex justify-content-center mt-5 gap-2">
+      @for (p of [].constructor(totalNombrePages()); track $index) {
+        <button 
+          class="btn bouton-pagination" 
+          [class.active]="$index + 1 === pageActuelle()"
+          (click)="changerPage($index + 1)">
+          {{ $index + 1 }}
+        </button>
+      }
+    </div>
+  }
+</div>

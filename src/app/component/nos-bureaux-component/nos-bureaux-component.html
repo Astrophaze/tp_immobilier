@@ -1,0 +1,46 @@
+<div class="image-bg-wrapper py-5">
+  <div class="container container-small position-relative">
+    
+    <div class="row align-items-center mb-4">
+      <div class="col-6">
+        <h1 class="titre mb-0">Nos bureaux</h1>
+        <div class="trait"></div>
+      </div>
+      <div class="col-6 text-end">
+        <a [routerLink]="['/recherche']" class="text-decoration-none text-dark fw-bold small">
+          TOUTES LES OFFRES
+          <img class="ms-2 mb-1" src="images/right-arrow black.png" alt="fleche droite" width="15" />
+        </a>
+      </div>
+    </div>
+
+    <img src="images/to-left.png" class="btn-slider btnPrev" (click)="slidePrev()" alt="Précédent"/>
+    <img src="images/to-right.png" class="btn-slider btnNext" (click)="slideNext()" alt="Suivant"/>
+
+    <div class="dots-decoration d-none d-md-block">
+      <img src="images/DOTS.png" class="img-fluid" alt=""/>
+    </div>
+
+    @if (listeOffres() && listeOffres().length > 0) {
+      <swiper-container #swiperEl navigation="false" init="false" class="mt-4">
+        @for (swiper of listeOffres(); track swiper.id) {
+          <swiper-slide class="pb-4">
+            <div class="card h-100 shadow-sm border-0 card-immobilier mx-auto">
+              <div class="img-container">
+                <img [src]="swiper.photoUrl" class="card-img-top" [alt]="swiper.libelle" />
+              </div>
+              <div class="card-body d-flex flex-column p-4">
+                <h5 class="card-title fw-bold h6">{{ swiper.libelle }}</h5>
+                <p class="card-text text-orange small mb-1">{{ swiper.ville }}</p>
+                <p class="card-text text-muted mb-3"><strong>{{ swiper.prix }} €</strong></p>
+                <div class="mt-auto">
+                  <a href="#" class="btn btn-dark btn-sm w-100 py-2 fw-bold">VOIR</a>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+        }
+      </swiper-container>
+    }
+  </div>
+</div>

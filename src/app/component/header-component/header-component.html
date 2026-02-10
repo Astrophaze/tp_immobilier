@@ -1,0 +1,73 @@
+<div class="header-bg">
+  <nav class="navbar navbar-expand-lg immeuble">
+    <div class="container">
+      <a class="navbar-brand logo" href="/">
+        <img src="images/logo/logo.png" alt="Agence immobiliers" width="100" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav align-items-center lienMenu">
+          <li class="nav-item"><a class="nav-link colorMenu p-3" href="/">QUI SOMMES NOUS?</a></li>
+          <li class="nav-item"><a class="nav-link colorMenu p-3" href="#">NOTRE METIER</a></li>
+          <li class="nav-item"><a class="nav-link colorMenu p-3" href="#">NOS OFFRES</a></li>
+          <li class="nav-item"><a class="nav-link colorMenu p-3" href="#">ACTUALITES</a></li>
+          <li class="nav-item"><a class="nav-link colorMenu p-3" href="#">NOS RÉFÉRENCES</a></li>
+          <li class="nav-item"><a class="nav-link colorMenu p-3" href="#">NOUS CONTACTER</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container espace">
+    <h1 class="titre">Votre recherche de biens</h1>
+    <div>
+      <button class="bouton">Acheter</button>
+      <button class="bouton">LOUER</button>
+      <button class="bouton">ESTIMER</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <form (ngSubmit)="research()">
+      <div class="row">
+        <div class="col-2">
+          <select [(ngModel)]="selection.type" class="form-select select choix">
+            <option value="" selected disabled>Type de bien</option>
+            @for (type of types(); track type.id) {
+              <option [value]="type.id">{{ type.libelle }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="col-2">
+          <select [(ngModel)]="selection.ville" class="form-select select choix">
+            <option value="" selected disabled>Localisation</option>
+            @for (ville of villes(); track ville.ville) {
+              <option [value]="ville.ville">{{ ville.ville }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="col-2">
+          <select [(ngModel)]="selection.budget" class="form-select select choix">
+            <option value="" selected disabled>Budget</option>
+            @for (item of offres(); track item.id) {
+              <option [value]="item.prix">{{ item.prix }} €</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <button class="search">CHERCHER <img class="ms-4 p-0" src="images/search.png" /></button>
+      <button class="search">FILTRER <img class="ms-4 p-1" src="images/filters.png" /></button>
+    </form>
+  </div>
+</div>

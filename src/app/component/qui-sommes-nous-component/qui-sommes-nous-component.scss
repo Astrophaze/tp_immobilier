@@ -1,0 +1,66 @@
+@use '../../../variabes' as var;
+
+.color1 {
+  background-color: var.$orange;
+}
+.color2 {
+  background-color: var.$lightBlue;
+}
+.color3 {
+  background-color: var.$blue;
+}
+.color4 {
+  background-color: var.$darkBlue;
+}
+
+.bar-fine {
+  width: 30px;
+  min-height: 70vh;
+}
+.bar-moyenne {
+  width: 50px;
+  min-height: 70vh;
+}
+.bar-large {
+  width: 80px;
+  min-height: 70vh;
+}
+
+.bar-fond {
+  min-height: 70vh;
+}
+
+.image-position {
+  position: absolute;
+  right: -30%;
+  width: 100%;
+  z-index: 10;
+}
+
+.image {
+  width: 500px;
+  height: auto;
+  margin-top: 100px;
+  margin-left: 400px;
+  position: relative;
+  z-index: 10;
+}
+
+.point {
+  position: absolute;
+  top: 50px;
+  left: 360px;
+  width: 400px;
+  z-index: 9;
+} 
+.trait {
+    width: 50px;
+     height: 3px;
+      background: var.$orange;
+       margin-bottom: 20px;
+} .padding {
+    padding-top: -10px;
+} .boutton {
+  background-color: var.$orange;
+  color: var.$white;
+}

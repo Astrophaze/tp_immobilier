@@ -1,0 +1,94 @@
+@use '../../../variabes' as var;
+
+.footer-bg {
+  background-color: var.$black;
+}
+
+.titre-footer {
+  font-size: 40px;
+  font-weight: 400;
+  color: var.$white;
+}
+
+.trait-orange {
+  width: 50px;
+  height: 3px;
+  background-color: var.$orange;
+}
+
+.custom-input {
+  background-color: var.$white;
+  border-radius: 8px;
+  border: none;
+  padding: 10px 15px;
+
+  &::placeholder {
+    color: #999;
+    font-size: 14px;
+  }
+}
+
+.nav-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+
+  a {
+    color: var.$orange;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+hr {
+  margin: 10px;
+  border: 0;
+  border-top: 1px solid #fff;
+  opacity: 1;
+}
+
+.text-secondary {
+  color: #adb5bd !important;
+}
+
+.small {
+  font-size: 13px;
+}
+.btn-orange {
+  background-color: var.$orange;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px;
+  border: none;
+
+  &:hover {
+    background-color: #fff;
+    color: var.$orange;
+  }
+}
+
+.text-orange {
+  color: var.$orange !important;
+}
+.bouton {
+  background-color: var.$orange;
+  color: var.$white;
+  border-radius: 5px;
+  margin-left: 250px;
+}
+.icon img {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+.logo {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+}

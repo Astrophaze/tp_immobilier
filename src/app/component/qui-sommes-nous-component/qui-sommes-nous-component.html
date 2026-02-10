@@ -1,0 +1,28 @@
+<div class="container-fluid p-0">
+  <div class="row g-0 align-items-center">
+    <div class="col-auto bar-fine color1"></div>
+    <div class="col-auto bar-moyenne color2"></div>
+    <div class="col-auto bar-large color3"></div>
+
+    <div class="col-8 bar-fond color4 d-flex align-items-center position-relative padding">
+      <div class="col-7">
+        <div class="p-5 text-white">
+          @for (article of dataArticle(); track article.id) {
+            <h1>{{ article.titre }}</h1>
+            <div class="trait"></div>
+            <p class="text-start">{{ article.contenu }}</p>
+            <a href="#" class="btn fw-bold boutton mt-3"
+              >{{ article.libelle_lien }}
+              <span><img class="ms-5 mb-1" src="images/right-arrow white.png"/></span
+            ></a>
+          }
+        </div>
+      </div>
+
+      <div class="image-position">
+        <img src="images/DOTS.png" class="point"/>
+        <img src="images/our office.png" class="image"/>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,173 @@
+<footer class="footer-bg text-white py-5">
+  <div class="container">
+    <div class="row">
+      @for (item of articleContact(); track item.id) {
+        <div class="col-md-6 border-end border-white pe-md-5">
+          <h2 class="titre-footer">{{ item.titre }}</h2>
+          <div class="trait-orange mb-4"></div>
+          <div class="">
+            {{ item.contenu }}
+          </div>
+          <h2 class="fs-5 mt-5">RUDIGOZ & ASSOCIES, CONSEIL IMMOBILIER.</h2>
+        </div>
+      }
+
+      <div class="col-md-6 ps-md-5">
+        <h2 class="titre-footer">Prendre contact</h2>
+        <div class="trait-orange mb-4"></div>
+
+          <form [formGroup]="formulaire" (ngSubmit)="sendForm()" class="row g-3">
+            <div class="col-6">
+              <input
+                type="text"
+                formControlName="prenom"
+                name="prenom"
+                class="form-control custom-input"
+                placeholder="Votre prénom"
+                required
+                minlength="3"
+              />
+              @if (formulaire.get('prenom')?.touched) {
+                @if (formulaire.get('prenom')?.hasError('required')) {
+                  <small class="text-danger">Le prénom est obligatoire</small>
+                }
+                @if (formulaire.get('prenom')?.hasError('minLength')) {
+                  <small class="text-danger">3 caractères minimum</small>
+                }
+                @if (formulaire.get('prenom')?.hasError('maxLength')) {
+                  <small class="text-danger">50 caractères maximum</small>
+                }
+              }
+            </div>
+            <div class="col-6">
+              <input
+                type="text"
+                formControlName="nom"
+                name="nom"
+                class="form-control custom-input"
+                placeholder="Votre nom"
+                required
+                minlength="3"
+              />
+              @if (formulaire.get('nom')?.touched) {
+                @if (formulaire.get('nom')?.hasError('required')) {
+                  <small class="text-danger">Le prénom est obligatoire</small>
+                }
+                @if (formulaire.get('nom')?.hasError('minLength')) {
+                  <small class="text-danger">3 caractères minimum</small>
+                }
+                @if (formulaire.get('nom')?.hasError('maxLength')) {
+                  <small class="text-danger">50 caractères maximum</small>
+                }
+              }
+            </div>
+            <div class="col-6">
+              <input
+                type="text"
+                formControlName="telephone"
+                name="telephone"
+                class="form-control custom-input"
+                placeholder="Votre téléphone"
+                required
+                pattern="^[0-9]+$"
+              />
+              @if (formulaire.get('telephone')?.touched) {
+                @if (formulaire.get('telephone')?.hasError('required')) {
+                  <small class="text-danger">Le téléphone est obligatoire</small>
+                }
+              }
+            </div>
+            <div class="col-6">
+              <input
+                type="email"
+                formControlName="email"
+                name="email"
+                class="form-control custom-input"
+                placeholder="Votre adresse email"
+                required
+                email
+              />
+              @if (formulaire.get('email')?.touched) {
+                @if (formulaire.get('email')?.hasError('required')) {
+                  <small class="text-danger">L'email est obligatoire</small>
+                }
+                @if (formulaire.get('email')?.hasError('email')) {
+                  <small class="text-danger">Entrez un email valide</small>
+                }
+                @if (formulaire.get('email')?.hasError('maxLenght')) {
+                  <small class="text-danger">Email trop long</small>
+                }
+              }
+            </div>
+            <div class="col-12">
+              <textarea
+                formControlName="message"
+                name="message"
+                class="form-control custom-input"
+                rows="3"
+                placeholder="Votre message..."
+                required
+              ></textarea>
+              @if (formulaire.get('message')?.touched) {
+                @if (formulaire.get('message')?.hasError('required')) {
+                  <small class="text-danger">Message requis</small>
+                }
+                @if (formulaire.get('message')?.hasError('minLenght')) {
+                  <small class="text-danger">10 caractères minimum</small>
+                }
+                @if (formulaire.get('message')?.hasError('maxLenght')) {
+                  <small class="text-danger">200 caractères maximum</small>
+                }
+              }
+            </div>
+
+            <div class="col-12 mt-3">
+              <button
+                type="button"
+                [disabled]="formulaire.invalid"
+                class="btn-orange-submit bouton fs-6 fw-bolder"
+              >
+                ENVOYER
+              </button>
+            </div>
+          </form>
+      </div>
+    </div>
+
+    <hr class="mt-5 border-white opacity-100" />
+
+    <div class="nav-footer">
+      <a href="#">QUI SOMMES NOUS ?</a>
+      <a href="#">NOTRE MÉTIER</a>
+      <a href="#">NOS OFFRES</a>
+      <a href="#">ACTUALITÉS</a>
+      <a href="#">NOS RÉFÉRENCES</a>
+      <a href="#">NOUS CONTACTER</a>
+    </div>
+
+    <hr class="mb-4 border-white opacity-100" />
+
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <img src="images/logo/logo.png" class="img-fluid logo" />
+      </div>
+      <div class="col-md-8 text-end">
+        <div class="d-inline-flex gap-3 icon">
+          <img src="images/logo/logo-facebook-icon.png" alt="fb" />
+          <img src="images/logo/linkedin icon.png" alt="li" />
+          <img src="images/logo/X-Logo.png" alt="x" />
+          <img src="images/logo/logo-pinterest.png" alt="pin" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4 small">
+      <div class="col-md-4">© 2026 | TOUS DROITS RÉSERVÉS</div>
+      <div class="col-md-8 text-end">
+        <span class="mx-3">04 72 69 03 03</span>
+        <span class="mx-3">47 RUE TRONCHET - LYON 69006</span>
+        <span>CONTACT@RUDIGOZ.COM</span>
+      </div>
+    </div>
+  </div>
+</footer>
