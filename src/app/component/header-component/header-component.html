@@ -2,7 +2,11 @@
   <nav class="navbar navbar-expand-lg immeuble">
     <div class="container">
       <a class="navbar-brand logo" href="/">
-        <img src="images/logo/logo.png" alt="Agence immobiliers" width="100" />
+        <img
+          src="images/logo/logo.png"
+          alt="Agence immobiliers"
+          width="100"
+        />
       </a>
       <button
         class="navbar-toggler"
@@ -36,38 +40,38 @@
   </div>
 
   <div class="container">
-    <form (ngSubmit)="research()">
+    <form [formGroup]="formulaire" (ngSubmit)="research()">
       <div class="row">
         <div class="col-2">
-          <select [(ngModel)]="selection.type" class="form-select select choix">
+          <select class="form-select select choix" formControlName="typeBien">
             <option value="" selected disabled>Type de bien</option>
             @for (type of types(); track type.id) {
               <option [value]="type.id">{{ type.libelle }}</option>
             }
           </select>
         </div>
-
+        
         <div class="col-2">
-          <select [(ngModel)]="selection.ville" class="form-select select choix">
-            <option value="" selected disabled>Localisation</option>
-            @for (ville of villes(); track ville.ville) {
-              <option [value]="ville.ville">{{ ville.ville }}</option>
-            }
-          </select>
-        </div>
-
-        <div class="col-2">
-          <select [(ngModel)]="selection.budget" class="form-select select choix">
-            <option value="" selected disabled>Budget</option>
-            @for (item of offres(); track item.id) {
-              <option [value]="item.prix">{{ item.prix }} €</option>
-            }
-          </select>
-        </div>
+          <select class="form-select select choix" formControlName="ville">
+          <option value="" selected disabled>Localisation</option>
+          @for (ville of villes(); track ville.ville) {
+            <option [value]="ville.ville">{{ ville.ville }}</option>
+          }
+        </select>
       </div>
-
-      <button class="search">CHERCHER <img class="ms-4 p-0" src="images/search.png" /></button>
-      <button class="search">FILTRER <img class="ms-4 p-1" src="images/filters.png" /></button>
-    </form>
-  </div>
+      
+      <div class="col-2">
+        <select class="form-select select choix" formControlName="budget">
+          <option value="" selected disabled>Budget</option>
+          @for (item of offres(); track item.id) {
+            <option [value]="item.prix">{{ item.prix }} €</option>
+          }
+        </select>
+      </div>
+    </div> 
+    
+    <button class="search">CHERCHER <img class="ms-4 p-0" src="images/search.png"/></button>
+    <button class="search">FILTRER <img class="ms-4 p-1" src="images/filters.png" /></button>
+  </form>
+</div>
 </div>

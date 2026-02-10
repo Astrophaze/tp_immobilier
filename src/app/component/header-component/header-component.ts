@@ -1,6 +1,6 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router'; 
 import { RechercheService } from '../../services/recherche-service';
 import { ApiService } from '../../services/api-service';
@@ -11,13 +11,13 @@ import { OffreModel } from '../../models/offre-model';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule], 
+  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule], 
   templateUrl: './header-component.html',
   styleUrl: './header-component.scss'
 })
 export class HeaderComponent implements OnInit {
   
-
+  formulaire: FormGroup;
   types = signal<TypeBienModel[]>([]);
   villes = signal<VilleModel[]>([]);
   offres = signal<OffreModel[]>([]);
@@ -29,7 +29,13 @@ export class HeaderComponent implements OnInit {
   };
 
 
-  constructor(private apiService: ApiService, private rechercheService: RechercheService, private router: Router){}
+  constructor(private apiService: ApiService, private rechercheService: RechercheService, private router: Router, private fb: FormBuilder){
+    this.formulaire = this.fb.group({
+      typeBien: [''],
+      ville: [''],
+      budget: []
+    })
+  }
 
   ngOnInit(): void {
     this.apiService.fetchTypesBiens().subscribe({
