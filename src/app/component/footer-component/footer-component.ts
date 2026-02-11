@@ -42,6 +42,14 @@ export class FooterComponent implements OnInit {
   }
 
   sendForm() {
-    this.formSent.set(true);
+    this.http.post('http://api-immobilier.osengo-tpdwwm-moulins.fr/contact.php', this.formulaire.value).subscribe({
+      next: (response) => {
+        console.log('Formulaire envoyé avec succès:', response);
+        this.formSent.set(true);
+      },
+      error: (error) => {
+        console.error('Erreur lors de l\'envoi du formulaire:', error);
+      }
+    });       
   }
 }

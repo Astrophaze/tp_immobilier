@@ -55,7 +55,12 @@ export class HeaderComponent implements OnInit {
   }
 
   research(): void {
-    this.rechercheService.rechercher(this.selection);
+    const filtres = {
+      type: this.formulaire.value.typeBien,
+      ville: this.formulaire.value.ville,
+      budget: this.formulaire.value.budget
+    };
+    this.rechercheService.rechercher(filtres);
     this.router.navigate(['/recherche']);
   }
 }
